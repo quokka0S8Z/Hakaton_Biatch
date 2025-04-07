@@ -24,7 +24,7 @@ class Game:
                 if event.key == pygame.K_F5:
                     self.running = False
                 elif event.key == pygame.K_p:
-                    pygame.display.toggle_fullscreen()
+                    pygame.display.toggle_fullscreen()#toggle fullscreen mode by pressing p
 
             elif event.type == pygame.MOUSEBUTTONDOWN and self.state == "menu":
                 if self.button_rect.collidepoint(pygame.mouse.get_pos()):
@@ -37,7 +37,7 @@ class Game:
             #pygame.draw.rect(self.screen, self.button_color, self.button_rect)
         elif self.state == "game":
             pass
-        #to do:
+        #TODO:
             # make main game background platforms exit(or something like that) and obsticoles(use the smile detector in each one of them)
             # combie the health bar and character into one file and make it work with the game
             #make player animation(items maybe?)
