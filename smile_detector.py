@@ -6,7 +6,7 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 webcam = cv2.VideoCapture(0)
 
 smile_counter = 0
-SMILE_THRESHOLD = 5
+SMILE_THRESHOLD = 10
 
 def detect_smile():
     global smile_counter
