@@ -29,3 +29,6 @@ def detect_smile():
 def release_camera():
     webcam.release()
     cv2.destroyAllWindows()
+
+print(detect_smile())
+#dosnt work for my cemra no matter how hard i smile
