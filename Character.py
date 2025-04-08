@@ -37,3 +37,4 @@ class Character:
 
     def draw(self, screen):
         screen.blit(self.image, (self.x, self.y))
+    #most of this is not really needed or useable with pygame

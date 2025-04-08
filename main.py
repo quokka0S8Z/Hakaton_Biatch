@@ -16,6 +16,9 @@ class Game:
 
         self.state = "menu"
 
+        self.health = 0
+        self.speed = 5
+
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -37,13 +40,19 @@ class Game:
             self.screen.blit(self.background, (0, 0))
             #pygame.draw.rect(self.screen, self.button_color, self.button_rect)
         elif self.state == "game":
-            pass
+            self.screen.blit(self.background, (0, 0))
+            self.draw_health(self.screen)# change backgound to game background
         #TODO:
             # make main game background platforms exit(or something like that) and obsticoles(use the smile detector in each one of them)
             # combie the health bar and character into one file and make it work with the game
             #make player animation(items maybe?)
             # make unique lvls(maybe 3-5) with different obsticoles
-
+    def draw_health(self, screen):
+                pygame.draw.rect(screen, (255, 0, 0), (20, 20, 200, 20))
+                pygame.draw.rect(screen, (0, 255, 0), (20, 20, 2 * self.health, 20))
+                #ammmm... well the health bar does something i guess
+                #yea im not fixing this shit
+                
     def run(self):
         while self.running:
             self.handle_events()
