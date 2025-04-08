@@ -3,15 +3,25 @@ import cv2
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 
-webcam = cv2.VideoCapture(0)
+try:
+    webcam = cv2.VideoCapture(0)  # Attempt to access the camera
+    if not webcam.isOpened():
+        raise ValueError("Camera index out of range or not accessible.")
+except Exception as e:
+    print(f"Error initializing webcam: {e}")
+    webcam = None
 
 smile_counter = 0
 SMILE_THRESHOLD = 10
 
 def detect_smile():
     global smile_counter
+    if webcam is None:
+        print("Webcam is not initialized.")
+        return False
     success, frame = webcam.read()
     if not success:
+        print("Failed to read from webcam.")
         return False
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -27,8 +37,13 @@ def detect_smile():
     return False
 
 def release_camera():
-    webcam.release()
+    if webcam:
+        webcam.release()
     cv2.destroyAllWindows()
 
-print(detect_smile())
-#dosnt work for my cemra no matter how hard i smile
+try:
+    print(detect_smile())
+except Exception as e:
+    print(f"An error occurred during smile detection: {e}")
+finally:
+    release_camera()
