@@ -1,19 +1,20 @@
 import pygame
+from smile_detector import detect_smile
 
 class Game:
     def __init__(self):
         pygame.init()
         pygame.font.init()
         self.running = True
-        self.screen = pygame.display.set_mode((800, 600))  # Set the screen size
+        self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("The Way Home Game")
-        self.background = pygame.image.load("pygame_art\\background.png")
+        self.background = pygame.image.load("pygame_art\\background.png") #change menu backgound?
         self.background = pygame.transform.scale(self.background, (800, 600))
 
-        self.button_color = (255, 0, 0)  # Red color for the button
-        self.button_rect = pygame.Rect(225, 290, 370, 80)  # x, y, width, height
+        self.button_color = (255, 0, 0) 
+        self.button_rect = pygame.Rect(225, 290, 370, 80)  
 
-        self.state = "menu"  # Start in the menu state
+        self.state = "menu"
 
     def handle_events(self):
         for event in pygame.event.get():
