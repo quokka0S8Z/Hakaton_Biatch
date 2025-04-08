@@ -47,3 +47,4 @@ except Exception as e:
     print(f"An error occurred during smile detection: {e}")
 finally:
     release_camera()
+#is this even working? i only got false after trying for a whole 5m
